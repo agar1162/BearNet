@@ -9,7 +9,7 @@
 	<relativePath/> <!-- lookup parent from repository -->
 </parent>
 <groupId>com.example</groupId>
-<artifactId>posgresql_test</artifactId>
+<artifactId>api</artifactId>
 <version>0.0.1-SNAPSHOT</version>
 <name>posgresql_test</name>
 <description>Demo project for Spring Boot</description>

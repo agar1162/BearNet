@@ -14,5 +14,3 @@ down:
 	docker compose -f docker-compose.dev.yaml down --remove-orphans || \
 	docker compose -f docker-compose.prod.yaml down --remove-orphans
 
-logs:
-	docker compose logs -f
