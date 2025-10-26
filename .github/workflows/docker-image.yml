@@ -32,5 +32,11 @@ jobs:
       working-directory: BearNet.api
     
     - name: Build Docker image
-      run: docker build -t bearnet-api:latest .
+      run: docker build -t bearnet .
       working-directory: BearNet.api
+
+    - name: Tag Docker Image
+      run: docker tag bearnet:latest 287706942477.dkr.ecr.us-west-1.amazonaws.com/bearnet:latest
+
+    - name: Push Docker Image
+      run: docker push 287706942477.dkr.ecr.us-west-1.amazonaws.com/bearnet:latest
