@@ -14,6 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
+    
+    - name: Build JAR
+      run: ./mvnw clean package -DskipTests
+      working-directory: bearnet.api
+    
+    - name: Build Docker image
       run: docker build -t bearnet-api:latest .
-      working-directory: BearNet.api
+      working-directory: bearnet.api
