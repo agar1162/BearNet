@@ -1,6 +1,8 @@
 services:
   springboot_api:
     build: .
+    env_file:
+      - .env
     container_name: api_prod
     environment:
       SPRING_PROFILES_ACTIVE: prod
