@@ -17,8 +17,8 @@ jobs:
     
     - name: Build JAR
       run: ./mvnw clean package -DskipTests
-      working-directory: bearnet.api
+      working-directory: BearNet.api
     
     - name: Build Docker image
       run: docker build -t bearnet-api:latest .
-      working-directory: bearnet.api
+      working-directory: BearNet.api
