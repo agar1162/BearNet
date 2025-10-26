@@ -1,0 +1,14 @@
+services:
+  springboot_api:
+    build: .
+    container_name: api_prod
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    networks:
+      - prod_net
+    ports:
+      - "8080:8080"
+
+networks:
+  prod_net:
+    driver: bridge
