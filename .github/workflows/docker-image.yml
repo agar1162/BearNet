@@ -21,8 +21,11 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-1
+        
     - name: Verify login
       run: aws sts get-caller-identity
+    - name: Auth ECR
+      run: aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 287706942477.dkr.ecr.us-west-1.amazonaws.com
         
     - name: Build JAR
       run: ./mvnw clean package -DskipTests
