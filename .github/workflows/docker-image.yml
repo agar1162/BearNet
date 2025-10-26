@@ -37,6 +37,10 @@ jobs:
 
     - name: Tag Docker Image
       run: docker tag bearnet:latest 287706942477.dkr.ecr.us-west-1.amazonaws.com/bearnet:latest
+      working-directory: BearNet.api
+
 
     - name: Push Docker Image
       run: docker push 287706942477.dkr.ecr.us-west-1.amazonaws.com/bearnet:latest
+      working-directory: BearNet.api
+
