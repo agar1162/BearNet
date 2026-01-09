@@ -1,0 +1,42 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/app_dev
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm run dev -- --host
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16
+    container_name: local-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_dev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
